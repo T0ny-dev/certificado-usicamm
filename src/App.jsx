@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useParams } from 'react-router-dom';
 import Certificate from './components/Certificate.jsx';
 
 // Definir la lista de certificados directamente en el archivo
@@ -15,13 +15,27 @@ const certificates = [
 ];
 
 const CertificatePage = () => {
-  const location = useLocation();
-  const certId = new URLSearchParams(location.search).get('id');
-  const cert = certificates.find((c) => c.id === parseInt(certId, 10));
+  const { id } = useParams();
+  const cert = certificates.find((c) => c.id === parseInt(id, 10));
 
   return (
     <div>
       {cert ? <Certificate {...cert} /> : <div>Certificate not found</div>}
+    </div>
+  );
+};
+
+const CertificateList = () => {
+  return (
+    <div>
+      <h2>Lista de Certificados</h2>
+      <ul>
+        {certificates.map((cert) => (
+          <li key={cert.id}>
+            <Link to={`/certificate/${cert.id}`}>{cert.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -32,7 +46,8 @@ const App = () => {
       <div className='certificate'>
         <h1>Validación de Certificados</h1>
         <Routes>
-          <Route path="/certificate" element={<CertificatePage />} />
+          <Route path="/" element={<CertificateList />} />
+          <Route path="/certificate/:id" element={<CertificatePage />} />
         </Routes>
       </div>
     </BrowserRouter>
@@ -40,6 +55,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
