@@ -1030,3 +1030,5 @@ const certificates = [
   { "id": 1029, "course": "Convivencia respetuosa en el aula: prevención y manejo del bullying", "name": "ZINDI DAENA", "apellido": "GOVEA VEGA", "hours": 40, "folio": "1029", "emision": "15 de diciembre del 2023", "periodo": "Del 15 de noviembre de 2023 al 15 de diciembre de 2023" }
     // ... Agregar más certificados según sea necesario
   ];
+
+  export default certificates;
