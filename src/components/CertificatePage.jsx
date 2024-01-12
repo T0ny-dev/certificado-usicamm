@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const CertificatePage = ({ loading, certificates }) => {
+const CertificatePage = () => {
   const { id } = useParams();
-  const cert = certificates.find((c) => c.Folio === id);
+  const [cert, setCert] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Verificar si ya tienes los datos
+    if (!cert) {
+      // Realizar la solicitud a la API para obtener el certificado específico
+      axios.get(`https://api-cert-utusicamm1.onrender.com/certificates/${id}`)
+        .then(response => {
+          setCert(response.data);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error('Error fetching certificate data:', error);
+          setLoading(false);
+        });
+    }
+  }, [cert, id]);
 
   return (
     <div>
