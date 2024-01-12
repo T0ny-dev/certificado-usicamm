@@ -1,12 +1,13 @@
+// App.jsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Link, useParams } from 'react-router-dom';
-import certificates from "./data/certificates.js";
+import CertificatesData from './data/CertificatesData.js';
 import Certificate from './components/Certificate.jsx';
 
 const CertificateList = ({ certificates }) => {
   return (
     <div>
-      <h2>directorio de Certificados</h2>
+      <h2>Directorio de Certificados</h2>
       <ul>
         {certificates.map((cert) => (
           <li key={cert.id}>
@@ -30,17 +31,13 @@ const CertificatePage = ({ certificates }) => {
 };
 
 const App = () => {
-  const [certificatesData, setCertificatesData] = useState(certificates);
+  const [certificatesData, setCertificatesData] = useState([]);
 
   useEffect(() => {
     // Simulación de carga asíncrona de datos
-    const fetchData = async () => {
-      // Aquí establecemos la lista de certificados utilizando los datos importados
-      setCertificatesData(certificates);
-    };
-
-    fetchData();
-  }, []); // El segundo parámetro asegura que useEffect solo se ejecute una vez al montar el componente
+    // En este caso, utilizo CertificatesData directamente, pero podrías cargarlos de una API, etc.
+    setCertificatesData(CertificatesData);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -55,8 +52,6 @@ const App = () => {
 };
 
 export default App;
-
-
 
 
 

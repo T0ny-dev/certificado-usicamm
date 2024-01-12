@@ -1,4 +1,4 @@
-const certificates = [
+const CertificatesData = [
     { id: 1, name: 'ANA PAOLA', apellido: 'CACERES LUCIO', course: 'Diplomado: Teoría y práctica educativa en el aula de educación básica', hours: 120, folio: '0001', emision: '15 de diciembre del 2023', periodo: 'Del 15 de noviembre al 15 de diciembre de 2023' },
     { id: 2, name: 'ROSA AMELIA', apellido: 'CAMERO CASTRO', course: 'Diplomado: Teoría y práctica educativa en el aula de educación básica', hours: 120, folio: '0002', emision: '15 de diciembre del 2023', periodo: 'Del 15 de noviembre al 15 de diciembre de 2023' },
     { id: 3, name: 'ZULMA SARAHI', apellido: 'CARRIZALES PINEDA', course: 'Diplomado: Teoría y práctica educativa en el aula de educación básica', hours: 120, folio: '0003', emision: '15 de diciembre del 2023', periodo: 'Del 15 de noviembre al 15 de diciembre de 2023' },
@@ -1031,4 +1031,4 @@ const certificates = [
     // ... Agregar más certificados según sea necesario
   ];
 
-  export default certificates;
+  export default CertificatesData;
